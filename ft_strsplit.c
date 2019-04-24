@@ -6,7 +6,7 @@
 /*   By: mlarraq <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:00:10 by mlarraq           #+#    #+#             */
-/*   Updated: 2019/04/17 17:26:21 by mlarraq          ###   ########.fr       */
+/*   Updated: 2019/04/23 07:51:20 by mlarraq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ static char		*ft_mall(char const *s, int *a, char c)
 	return (dst);
 }
 
+static void		ft_delall(char **d, int i)
+{
+	while (--i > 0)
+		free(d[i]);
+	free(d[i]);
+	free(d);
+}
+
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**d;
@@ -86,7 +94,11 @@ char			**ft_strsplit(char const *s, char c)
 		a++;
 	while (i < count_words(s, c) && s[a])
 	{
-		d[i] = ft_mall(s, &a, c);
+		if ((d[i] = ft_mall(s, &a, c)) == NULL)
+		{
+			ft_delall(d, i);
+			return (NULL);
+		}
 		i++;
 	}
 	d[i] = NULL;

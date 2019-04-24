@@ -6,7 +6,7 @@
 /*   By: mlarraq <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 21:48:28 by mlarraq           #+#    #+#             */
-/*   Updated: 2019/04/17 09:13:33 by mlarraq          ###   ########.fr       */
+/*   Updated: 2019/04/23 07:14:14 by mlarraq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	*ft_memset(void *destination, int c, size_t n)
 		return (destination);
 	dest = (char *)destination;
 	while (n--)
-		*dest++ = (unsigned char)c;
+		*dest++ = (char)c;
 	return (destination);
 }

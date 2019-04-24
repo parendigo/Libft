@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlarraq <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/20 23:30:45 by mlarraq           #+#    #+#             */
-/*   Updated: 2019/04/21 05:13:04 by mlarraq          ###   ########.fr       */
+/*   Created: 2019/04/17 10:52:51 by mlarraq           #+#    #+#             */
+/*   Updated: 2019/04/23 07:54:31 by mlarraq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+char	*ft_strupfirst_string(const char *s)
 {
-	if (alst && del)
+	char	*dst;
+	size_t	i;
+
+	i = 0;
+	if (!*s)
+		return (NULL);
+	dst = ft_strdup(s);
+	if (dst == NULL)
+		return (NULL);
+	while (dst[i])
 	{
-		del((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
+		if (dst[i] >= 'a' && dst[i] <= 'z' && ft_isalpha(dst[i - 1]) == 0)
+			dst[i] = dst[i] - 32;
+		else if (dst[i] >= 'A' && dst[i] <= 'Z' && ft_isalpha(dst[i - 1]) == 1)
+			dst[i] = dst[i] + 32;
+		i++;
 	}
+	return (dst);
 }

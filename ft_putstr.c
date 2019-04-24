@@ -6,7 +6,7 @@
 /*   By: mlarraq <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:45:19 by mlarraq           #+#    #+#             */
-/*   Updated: 2019/04/17 06:36:10 by mlarraq          ###   ########.fr       */
+/*   Updated: 2019/04/23 07:17:25 by mlarraq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,5 @@
 void	ft_putstr(char const *s)
 {
 	if (s != NULL)
-	{
-		while (*s)
-			ft_putchar(*s++);
-	}
+		write(1, s, ft_strlen(s));
 }

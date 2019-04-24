@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_count_till.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlarraq <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/20 23:30:45 by mlarraq           #+#    #+#             */
-/*   Updated: 2019/04/21 05:13:04 by mlarraq          ###   ########.fr       */
+/*   Created: 2019/04/21 04:46:05 by mlarraq           #+#    #+#             */
+/*   Updated: 2019/04/23 06:11:42 by mlarraq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+int		ft_count_till(const char *str, const char c)
 {
-	if (alst && del)
+	const char *s;
+
+	s = str;
+	while (*s)
 	{
-		del((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
+		if (*s == c)
+			return (s - str);
+		++str;
 	}
+	return (0);
 }
